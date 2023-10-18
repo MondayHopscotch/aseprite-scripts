@@ -1,6 +1,6 @@
 function init(plugin)
 	plugin:newCommand{
-		id="flixelexport",
+		id="flixelatlasexport",
 		title="Flixel Atlas Export",
 		group="file_export",
 		onenabled = function()
@@ -43,17 +43,12 @@ function init(plugin)
 			-- print("dataBasePath: " .. dataBasePath)
 
 			local dlg = Dialog("Flixel Atlas Export")
+			dlg:separator{}
 			dlg:label{
 				id="info",
-				label="Helper that calls a sprite sheet export with good defaults"
+				label="Sprite Sheet Export with proper settings for use with Flixel"
 			}
-			dlg:label{
-				id="addtl",
-				label="The main export dialog will open after confirming"
-			}
-			dlg:separator{
-				id="sep",
-			}
+			dlg:separator{}
 			dlg:file{
 				id="image_path",
 				label="Image Export Path:",
@@ -63,6 +58,16 @@ function init(plugin)
 				id="data_path",
 				label="JSON Export Path:",
 				filename=dataBasePath .. RemoveExtension(Basename(app.sprite.filename)) .. ".json"
+			}
+			dlg:check{
+				id="customize_export",
+				label="Customize Export Settings",
+				selected=plugin.preferences.lastCustomized
+			}
+			dlg:check{
+				id="ask_overwrite",
+				label="Ask before overwriting existing files",
+				selected=plugin.preferences.askOverwrite
 			}
 			dlg:button{ id="confirm", text="Confirm" }
 			dlg:button{ id="cancel", text="Cancel" }
@@ -84,10 +89,12 @@ function init(plugin)
 
 			plugin.preferences.lastImagePath = Dirname(texturePath)
 			plugin.preferences.lastDataPath = Dirname(dataPath)
+			plugin.preferences.lastCustomized = data.customize_export
+			plugin.preferences.askOverwrite = data.ask_overwrite
 
 			app.command.ExportSpriteSheet{
-				ui=false,
-				askOverwrite=false,
+				ui=data.customize_export,
+				askOverwrite=data.ask_overwrite,
 				type=SpriteSheetType.PACKED,
 				textureFilename=texturePath,
 				dataFilename=dataPath,
@@ -100,9 +107,8 @@ function init(plugin)
 			}
 		end
 	}
-  end
-  
-  function exit(plugin)
+end
 
-  end
-  
+function exit(plugin)
+
+end

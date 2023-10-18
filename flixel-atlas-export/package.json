@@ -8,6 +8,9 @@
 	"contributes": {
 		"scripts": [
 			{ "path": "./flixelAtlasExport.lua" }
+		],
+		"keys": [
+			{ "id": "flixel-atlas-export-keys", "path": "./flixelAtlasExport.aseprite-keys" }
 		]
-	  }
-  }
+	}
+}
