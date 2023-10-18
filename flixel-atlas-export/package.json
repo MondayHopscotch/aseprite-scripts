@@ -1,0 +1,13 @@
+{
+	"name": "flixel-atlas-export",
+	"displayName": "Flixel Atlas Export",
+	"description": "Atlas export helper for haxe flixel",
+	"version": "1.0",
+	"author": { "name": "MondayHopscotch", "url": "https://github.com/bitDecayGames" },
+	"categories": [ "Scripts" ],
+	"contributes": {
+		"scripts": [
+			{ "path": "./flixelAtlasExport.lua" }
+		]
+	  }
+  }
