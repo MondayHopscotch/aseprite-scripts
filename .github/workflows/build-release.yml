@@ -19,5 +19,6 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
+        bodyFile: "README.md"
         artifacts: "./flixel-atlas-export/flixel-atlas-export.aseprite-extension"
         token: ${{ secrets.GITHUB_TOKEN }}
