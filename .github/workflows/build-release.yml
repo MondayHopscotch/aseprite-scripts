@@ -1,4 +1,4 @@
-name: Create Extension File
+name: Build Release
 on: 
   push:
     tags:
@@ -10,7 +10,7 @@ jobs:
       contents: write
     steps:
     - uses: actions/checkout@master
-    - name: Archive Release
+    - name: Create Extension Package
       uses: thedoctor0/zip-release@0.7.1
       with:
         type: 'zip'
@@ -19,5 +19,5 @@ jobs:
     - name: Upload Release
       uses: ncipollo/release-action@v1.12.0
       with:
-        artifacts: "flixel-atlas-export.aseprite-extension"
+        artifacts: "./flixel-atlas-export/flixel-atlas-export.aseprite-extension"
         token: ${{ secrets.GITHUB_TOKEN }}
