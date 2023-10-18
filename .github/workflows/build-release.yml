@@ -1,11 +1,13 @@
 name: Create Extension File
-on:
-  release:
-    types:
-      - published
+on: 
+  push:
+    tags:
+    - '*'
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
     - uses: actions/checkout@master
     - name: Archive Release
