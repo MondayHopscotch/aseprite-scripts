@@ -14,7 +14,7 @@ jobs:
       uses: jacobtomlinson/gha-find-replace@v3
       with:
         find: "BUILD_TAG"
-        replace: "${{ GITHUB_REF_NAME }}"
+        replace: "${{ github.ref_name }}"
         regex: false
         include: "**package.json"
     - name: Create Extension Package
