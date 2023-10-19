@@ -2,7 +2,7 @@ function init(plugin)
 	plugin:newCommand{
 		id="flixelatlasexport",
 		title="Flixel Atlas Export",
-		group="file_export",
+		group="file_export_1",
 		onenabled = function()
 			return app.sprite ~= nil
 		end,
