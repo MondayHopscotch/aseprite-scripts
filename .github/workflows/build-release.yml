@@ -11,12 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Set Plugin Version
-        uses: jacobtomlinson/gha-find-replace@v3
-        with:
-          find: "BUILD_TAG"
-          replace: "${{ GITHUB_REF_NAME }}"
-          regex: false
-          include: "**package.json"
+      uses: jacobtomlinson/gha-find-replace@v3
+      with:
+        find: "BUILD_TAG"
+        replace: "${{ GITHUB_REF_NAME }}"
+        regex: false
+        include: "**package.json"
     - name: Create Extension Package
       uses: thedoctor0/zip-release@0.7.1
       with:
