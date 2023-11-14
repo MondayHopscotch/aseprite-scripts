@@ -104,6 +104,8 @@ function init(plugin)
 				listLayers=layer,
 				listTags=true,
 				listSlices=true,
+				shapePadding=1,
+				trim=true,
 			}
 		end
 	}
